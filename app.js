@@ -1,92 +1,132 @@
 const business = {
-  name: "Luna Kitchen",
+  name: "贤仔烧腊",
   // Replace this with your WhatsApp number in international format.
   // Example for Malaysia: 60123456789
   whatsappNumber: "60123456789",
   currency: "RM",
 };
 
+const menuImages = {
+  roastDuck:
+    "https://images.unsplash.com/photo-1762088200446-f32ff63f8399?auto=format&fit=crop&w=900&q=85",
+  roastDisplay:
+    "https://images.pexels.com/photos/6645928/pexels-photo-6645928.jpeg?auto=compress&cs=tinysrgb&w=900",
+  charSiu:
+    "https://images.pexels.com/photos/8969968/pexels-photo-8969968.jpeg?auto=compress&cs=tinysrgb&w=900",
+  crispyPork:
+    "https://images.pexels.com/photos/8408377/pexels-photo-8408377.jpeg?auto=compress&cs=tinysrgb&w=900",
+  roastChicken:
+    "https://images.pexels.com/photos/12350418/pexels-photo-12350418.jpeg?auto=compress&cs=tinysrgb&w=900",
+  milkTea:
+    "https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=900&q=85",
+  lemonTea:
+    "https://images.pexels.com/photos/792613/pexels-photo-792613.jpeg?auto=compress&cs=tinysrgb&w=900",
+};
+
 const menuItems = [
   {
-    id: "chicken-rice-bowl",
-    name: "Signature Chicken Rice Bowl",
-    category: "Rice Bowls",
-    price: 12.9,
-    description: "Soy garlic chicken, fragrant rice, cucumber, egg, and house chilli.",
-    image:
-      "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "beef-teriyaki-bowl",
-    name: "Beef Teriyaki Bowl",
-    category: "Rice Bowls",
-    price: 16.9,
-    description: "Tender beef slices with teriyaki glaze, greens, and sesame rice.",
-    image:
-      "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "veggie-mushroom-bowl",
-    name: "Veggie Mushroom Bowl",
-    category: "Rice Bowls",
-    price: 11.9,
-    description: "Roasted mushrooms, tofu, corn, greens, and savoury sauce.",
-    image:
-      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "curry-noodles",
-    name: "Creamy Curry Noodles",
-    category: "Noodles",
+    id: "roast-duck-rice",
+    name: "港式烧鸭饭",
+    category: "烧味饭",
     price: 13.9,
-    description: "Rich curry broth, noodles, fish cake, egg, tofu puff, and herbs.",
-    image:
-      "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=85",
+    description: "皮脆肉嫩烧鸭，配白饭、青瓜和烧腊汁。",
+    image: menuImages.roastDuck,
   },
   {
-    id: "dry-chilli-noodles",
-    name: "Dry Chilli Noodles",
-    category: "Noodles",
-    price: 10.9,
-    description: "Springy noodles tossed in house chilli oil with crunchy toppings.",
-    image:
-      "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=900&q=85",
+    id: "char-siu-rice",
+    name: "蜜汁叉烧饭",
+    category: "烧味饭",
+    price: 12.9,
+    description: "蜜汁叉烧切片，甜香入味，配白饭和烧腊汁。",
+    image: menuImages.charSiu,
   },
   {
-    id: "dumplings",
-    name: "Pan-Fried Dumplings",
-    category: "Snacks",
-    price: 8.9,
-    description: "Six crispy dumplings served with ginger soy dipping sauce.",
-    image:
-      "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=900&q=85",
+    id: "siew-yoke-rice",
+    name: "脆皮烧肉饭",
+    category: "烧味饭",
+    price: 13.9,
+    description: "金黄脆皮烧肉，肥瘦相间，配白饭和特制酱汁。",
+    image: menuImages.crispyPork,
   },
   {
-    id: "spring-rolls",
-    name: "Crispy Spring Rolls",
-    category: "Snacks",
-    price: 7.9,
-    description: "Golden vegetable rolls with sweet chilli sauce.",
-    image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
+    id: "soy-sauce-chicken-rice",
+    name: "豉油鸡饭",
+    category: "烧味饭",
+    price: 12.9,
+    description: "港式豉油鸡，肉质嫩滑，酱香浓郁。",
+    image: menuImages.roastChicken,
+  },
+  {
+    id: "white-chicken-rice",
+    name: "白切鸡饭",
+    category: "烧味饭",
+    price: 12.9,
+    description: "滑嫩白切鸡，搭配姜蓉和清香白饭。",
+    image: menuImages.roastChicken,
+  },
+  {
+    id: "duck-char-siu-combo",
+    name: "烧鸭叉烧双拼饭",
+    category: "双拼/拼盘",
+    price: 16.9,
+    description: "烧鸭加蜜汁叉烧，一次满足两款经典烧味。",
+    image: menuImages.roastDisplay,
+  },
+  {
+    id: "siew-yoke-chicken-combo",
+    name: "烧肉油鸡双拼饭",
+    category: "双拼/拼盘",
+    price: 16.9,
+    description: "脆皮烧肉配油鸡，咸香嫩滑，份量十足。",
+    image: menuImages.crispyPork,
+  },
+  {
+    id: "four-treasure-rice",
+    name: "四宝饭",
+    category: "双拼/拼盘",
+    price: 19.9,
+    description: "烧鸭、叉烧、烧肉、油鸡，经典港式烧味拼盘饭。",
+    image: menuImages.roastDisplay,
+  },
+  {
+    id: "roast-duck-portion",
+    name: "烧鸭例牌",
+    category: "单点加料",
+    price: 24.9,
+    description: "适合分享的烧鸭例牌，可搭配饭或面。",
+    image: menuImages.roastDuck,
+  },
+  {
+    id: "char-siu-portion",
+    name: "叉烧例牌",
+    category: "单点加料",
+    price: 22.9,
+    description: "蜜汁叉烧例牌，适合加餸或多人分享。",
+    image: menuImages.charSiu,
+  },
+  {
+    id: "siew-yoke-portion",
+    name: "烧肉例牌",
+    category: "单点加料",
+    price: 23.9,
+    description: "脆皮烧肉例牌，皮脆肉香。",
+    image: menuImages.crispyPork,
+  },
+  {
+    id: "hk-milk-tea",
+    name: "港式奶茶",
+    category: "饮品",
+    price: 5.9,
+    description: "香滑港式奶茶，可选热或冷。",
+    image: menuImages.milkTea,
   },
   {
     id: "lemon-tea",
-    name: "Iced Lemon Tea",
-    category: "Drinks",
-    price: 4.9,
-    description: "Fresh brewed tea with lemon, served cold.",
-    image:
-      "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "milk-tea",
-    name: "Classic Milk Tea",
-    category: "Drinks",
+    name: "冻柠茶",
+    category: "饮品",
     price: 5.9,
-    description: "Smooth black tea with milk and light sweetness.",
-    image:
-      "https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=900&q=85",
+    description: "清爽港式冻柠茶。",
+    image: menuImages.lemonTea,
   },
 ];
 

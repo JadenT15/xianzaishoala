@@ -2,13 +2,14 @@
   color-scheme: light;
   --ink: #1f2523;
   --muted: #6c746f;
-  --paper: #fffaf2;
+  --paper: #fff8df;
   --panel: #ffffff;
   --line: #e5ded2;
-  --green: #1f6f55;
-  --green-dark: #114936;
-  --coral: #d86645;
-  --gold: #e7a83d;
+  --red: #b51f16;
+  --red-dark: #82150f;
+  --orange: #e44f20;
+  --gold: #f7c948;
+  --gold-soft: #fff1b8;
   --shadow: 0 20px 50px rgba(43, 34, 23, 0.12);
 }
 
@@ -67,7 +68,7 @@ textarea {
   height: 42px;
   place-items: center;
   border-radius: 8px;
-  background: var(--green);
+  background: var(--red);
   color: #fff;
   font-weight: 800;
 }
@@ -93,7 +94,7 @@ nav {
 }
 
 nav a:hover {
-  color: var(--green);
+  color: var(--red);
 }
 
 .hero {
@@ -103,8 +104,7 @@ nav a:hover {
   padding: clamp(28px, 7vw, 76px);
   background:
     linear-gradient(90deg, rgba(14, 20, 17, 0.84), rgba(14, 20, 17, 0.42) 52%, rgba(14, 20, 17, 0.08)),
-    url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85")
-      center/cover;
+    url("assets/xianzai-hero.jpg") center/cover;
   color: #fff;
 }
 
@@ -114,7 +114,7 @@ nav a:hover {
 
 .eyebrow {
   margin: 0 0 10px;
-  color: var(--coral);
+  color: var(--orange);
   font-size: 13px;
   font-weight: 900;
   letter-spacing: 0;
@@ -122,7 +122,7 @@ nav a:hover {
 }
 
 .hero .eyebrow {
-  color: #ffd37d;
+  color: var(--gold);
 }
 
 h1,
@@ -180,12 +180,12 @@ h2 {
 }
 
 .button.primary {
-  background: var(--green);
+  background: var(--red);
   color: #fff;
 }
 
 .button.primary:hover {
-  background: var(--green-dark);
+  background: var(--red-dark);
 }
 
 .button.ghost {
@@ -194,8 +194,8 @@ h2 {
 }
 
 .button.ghost.dark {
-  border-color: var(--green);
-  color: var(--green);
+  border-color: var(--red);
+  color: var(--red);
 }
 
 .button.full {
@@ -212,7 +212,7 @@ h2 {
 
 .quick-info div {
   padding: 22px clamp(18px, 4vw, 54px);
-  background: #fff7ea;
+  background: var(--gold-soft);
 }
 
 .quick-info span {
@@ -253,8 +253,8 @@ h2 {
 }
 
 .category-tabs button.active {
-  border-color: var(--green);
-  background: var(--green);
+  border-color: var(--red);
+  background: var(--red);
   color: #fff;
 }
 
@@ -306,7 +306,7 @@ h2 {
 }
 
 .price {
-  color: var(--green-dark);
+  color: var(--red-dark);
   font-size: 20px;
   font-weight: 950;
 }
@@ -317,7 +317,7 @@ h2 {
   border: 0;
   border-radius: 8px;
   background: var(--gold);
-  color: #241607;
+  color: var(--red-dark);
   cursor: pointer;
   font-size: 24px;
   font-weight: 900;
@@ -328,7 +328,7 @@ h2 {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
   gap: 24px;
-  background: #f7efe2;
+  background: #fff0c4;
 }
 
 .order-panel,
@@ -385,7 +385,7 @@ h2 {
 .quantity button {
   height: 34px;
   border: 0;
-  background: #fff7ea;
+  background: var(--gold-soft);
   cursor: pointer;
   font-weight: 900;
 }
@@ -430,8 +430,8 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(31, 111, 85, 0.14);
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(181, 31, 22, 0.16);
 }
 
 fieldset {
@@ -465,7 +465,7 @@ fieldset {
 .contact-section {
   align-items: center;
   justify-content: space-between;
-  background: #fffaf2;
+  background: var(--paper);
 }
 
 .contact-section p:not(.eyebrow) {
@@ -483,7 +483,7 @@ fieldset {
   align-items: center;
   justify-content: space-between;
   border-radius: 8px;
-  background: var(--green-dark);
+  background: var(--red-dark);
   color: #fff;
   padding: 12px 14px;
   box-shadow: var(--shadow);
@@ -493,7 +493,7 @@ fieldset {
 .mobile-cart a {
   border-radius: 8px;
   background: #fff;
-  color: var(--green-dark);
+  color: var(--red-dark);
   padding: 9px 12px;
 }
 
@@ -524,8 +524,7 @@ fieldset {
     padding-top: 120px;
     background:
       linear-gradient(0deg, rgba(14, 20, 17, 0.88), rgba(14, 20, 17, 0.34)),
-      url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85")
-        center/cover;
+      url("assets/xianzai-hero.jpg") center/cover;
   }
 
   .quick-info,
