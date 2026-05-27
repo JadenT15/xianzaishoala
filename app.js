@@ -243,7 +243,7 @@ function renderMenu() {
             ${getItemChoiceGroups(item).map((group) => renderChoiceGroup(item, group)).join("")}
             <div class="menu-card-footer">
               <span class="price" data-menu-price="${item.id}">${formatPrice(
-                getItemPrice(item, getDefaultChoices(item)),
+                getMenuDisplayPrice(item, getDefaultChoices(item)),
               )}</span>
               ${renderMenuQuantity(item, available)}
             </div>
@@ -293,6 +293,13 @@ function getItemPrice(item, choices = []) {
   return priceChoice?.price || item.price;
 }
 
+function getMenuDisplayPrice(item, choices = []) {
+  const quantity = getCartQuantity(item, choices);
+  const unitPrice = getItemPrice(item, choices);
+
+  return quantity > 0 ? unitPrice * quantity : unitPrice;
+}
+
 function renderMenuQuantity(item, available) {
   if (!available) {
     return `<button class="add-button" type="button" disabled>Sold Out</button>`;
@@ -316,7 +323,7 @@ function updateMenuQuantityDisplay(id) {
 
   if (!item || !output || !price) return;
   output.textContent = getCartQuantity(item, choices);
-  price.textContent = formatPrice(getItemPrice(item, choices));
+  price.textContent = formatPrice(getMenuDisplayPrice(item, choices));
 }
 
 function getCartItems() {
