@@ -46,6 +46,15 @@ const choiceGroups = {
       { value: "200g", available: true, price: 23 },
     ],
   },
+  duckPortionSize: {
+    id: "duckPortionSize",
+    label: "烧鸭规格",
+    options: [
+      { value: "一例", available: true, price: 24.9 },
+      { value: "半只", available: true, price: 48 },
+      { value: "一只", available: true, price: 88 },
+    ],
+  },
 };
 
 const menuItems = [
@@ -124,6 +133,7 @@ const menuItems = [
     price: 24.9,
     description: "适合分享的烧鸭例牌，可搭配饭或面。",
     image: menuImages.roastDuck,
+    choices: ["duckPortionSize"],
   },
   {
     id: "char-siu-portion",
