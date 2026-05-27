@@ -23,6 +23,47 @@ const menuImages = {
     "https://images.pexels.com/photos/792613/pexels-photo-792613.jpeg?auto=compress&cs=tinysrgb&w=900",
 };
 
+const choiceGroups = {
+  chickenPart: {
+    id: "chickenPart",
+    label: "鸡肉部位",
+    options: [
+      { value: "鸡胸", available: true },
+      { value: "鸡二度", available: true },
+      { value: "鸡翅", available: false },
+      { value: "鸡腿", available: true },
+    ],
+  },
+  charSiuCut: {
+    id: "charSiuCut",
+    label: "叉烧肥瘦",
+    options: [
+      { value: "肥", available: true },
+      { value: "瘦", available: true },
+      { value: "半肥瘦", available: true },
+    ],
+  },
+  duckPart: {
+    id: "duckPart",
+    label: "烧鸭部位",
+    options: [
+      { value: "鸭胸", available: true },
+      { value: "鸭腿", available: false },
+      { value: "上庄", available: true },
+      { value: "下庄", available: true },
+    ],
+  },
+  porkCut: {
+    id: "porkCut",
+    label: "烧肉部位",
+    options: [
+      { value: "脆皮", available: true },
+      { value: "五花", available: true },
+      { value: "瘦肉多", available: false },
+    ],
+  },
+};
+
 const menuItems = [
   {
     id: "roast-duck-rice",
@@ -31,6 +72,7 @@ const menuItems = [
     price: 13.9,
     description: "皮脆肉嫩烧鸭，配白饭、青瓜和烧腊汁。",
     image: menuImages.roastDuck,
+    choices: ["duckPart"],
   },
   {
     id: "char-siu-rice",
@@ -39,6 +81,7 @@ const menuItems = [
     price: 12.9,
     description: "蜜汁叉烧切片，甜香入味，配白饭和烧腊汁。",
     image: menuImages.charSiu,
+    choices: ["charSiuCut"],
   },
   {
     id: "siew-yoke-rice",
@@ -47,6 +90,7 @@ const menuItems = [
     price: 13.9,
     description: "金黄脆皮烧肉，肥瘦相间，配白饭和特制酱汁。",
     image: menuImages.crispyPork,
+    choices: ["porkCut"],
   },
   {
     id: "soy-sauce-chicken-rice",
@@ -55,6 +99,7 @@ const menuItems = [
     price: 12.9,
     description: "港式豉油鸡，肉质嫩滑，酱香浓郁。",
     image: menuImages.roastChicken,
+    choices: ["chickenPart"],
   },
   {
     id: "white-chicken-rice",
@@ -63,6 +108,7 @@ const menuItems = [
     price: 12.9,
     description: "滑嫩白切鸡，搭配姜蓉和清香白饭。",
     image: menuImages.roastChicken,
+    choices: ["chickenPart"],
   },
   {
     id: "duck-char-siu-combo",
@@ -71,6 +117,7 @@ const menuItems = [
     price: 16.9,
     description: "烧鸭加蜜汁叉烧，一次满足两款经典烧味。",
     image: menuImages.roastDisplay,
+    choices: ["duckPart", "charSiuCut"],
   },
   {
     id: "siew-yoke-chicken-combo",
@@ -79,6 +126,7 @@ const menuItems = [
     price: 16.9,
     description: "脆皮烧肉配油鸡，咸香嫩滑，份量十足。",
     image: menuImages.crispyPork,
+    choices: ["porkCut", "chickenPart"],
   },
   {
     id: "four-treasure-rice",
@@ -87,6 +135,7 @@ const menuItems = [
     price: 19.9,
     description: "烧鸭、叉烧、烧肉、油鸡，经典港式烧味拼盘饭。",
     image: menuImages.roastDisplay,
+    choices: ["duckPart", "charSiuCut", "porkCut", "chickenPart"],
   },
   {
     id: "roast-duck-portion",
@@ -95,6 +144,7 @@ const menuItems = [
     price: 24.9,
     description: "适合分享的烧鸭例牌，可搭配饭或面。",
     image: menuImages.roastDuck,
+    choices: ["duckPart"],
   },
   {
     id: "char-siu-portion",
@@ -103,6 +153,7 @@ const menuItems = [
     price: 22.9,
     description: "蜜汁叉烧例牌，适合加餸或多人分享。",
     image: menuImages.charSiu,
+    choices: ["charSiuCut"],
   },
   {
     id: "siew-yoke-portion",
@@ -111,6 +162,7 @@ const menuItems = [
     price: 23.9,
     description: "脆皮烧肉例牌，皮脆肉香。",
     image: menuImages.crispyPork,
+    choices: ["porkCut"],
   },
   {
     id: "hk-milk-tea",
@@ -149,6 +201,18 @@ function getCategories() {
   return ["All", ...new Set(menuItems.map((item) => item.category))];
 }
 
+function getItemChoiceGroups(item) {
+  return (item.choices || []).map((choiceId) => choiceGroups[choiceId]).filter(Boolean);
+}
+
+function getFirstAvailableOption(group) {
+  return group.options.find((option) => option.available);
+}
+
+function isItemAvailable(item) {
+  return getItemChoiceGroups(item).every((group) => getFirstAvailableOption(group));
+}
+
 function renderCategories() {
   categoryTabs.innerHTML = getCategories()
     .map(
@@ -161,6 +225,39 @@ function renderCategories() {
     .join("");
 }
 
+function renderChoiceGroup(item, group) {
+  const firstAvailable = getFirstAvailableOption(group);
+
+  return `
+    <fieldset class="choice-group">
+      <legend>${group.label}</legend>
+      <div class="choice-options">
+        ${group.options
+          .map((option) => {
+            const checked = firstAvailable?.value === option.value ? "checked" : "";
+            const disabled = option.available ? "" : "disabled";
+            const soldOut = option.available ? "" : "<span>Sold Out</span>";
+
+            return `
+              <label class="choice-chip ${option.available ? "" : "sold-out"}">
+                <input
+                  type="radio"
+                  name="${item.id}-${group.id}"
+                  value="${option.value}"
+                  ${checked}
+                  ${disabled}
+                />
+                ${option.value}
+                ${soldOut}
+              </label>
+            `;
+          })
+          .join("")}
+      </div>
+    </fieldset>
+  `;
+}
+
 function renderMenu() {
   const visibleItems =
     activeCategory === "All"
@@ -168,8 +265,10 @@ function renderMenu() {
       : menuItems.filter((item) => item.category === activeCategory);
 
   menuGrid.innerHTML = visibleItems
-    .map(
-      (item) => `
+    .map((item) => {
+      const available = isItemAvailable(item);
+
+      return `
         <article class="menu-card">
           <img src="${item.image}" alt="${item.name}" loading="lazy" />
           <div class="menu-card-body">
@@ -177,23 +276,50 @@ function renderMenu() {
               <h3>${item.name}</h3>
               <p>${item.description}</p>
             </div>
+            ${getItemChoiceGroups(item).map((group) => renderChoiceGroup(item, group)).join("")}
             <div class="menu-card-footer">
               <span class="price">${formatPrice(item.price)}</span>
-              <button class="add-button" type="button" data-add="${item.id}" aria-label="Add ${item.name}">
-                +
+              <button
+                class="add-button"
+                type="button"
+                data-add="${item.id}"
+                aria-label="Add ${item.name}"
+                ${available ? "" : "disabled"}
+              >
+                ${available ? "+" : "Sold Out"}
               </button>
             </div>
           </div>
         </article>
-      `,
-    )
+      `;
+    })
     .join("");
 }
 
+function getSelectedChoices(item) {
+  return getItemChoiceGroups(item).map((group) => {
+    const selected = document.querySelector(`input[name="${item.id}-${group.id}"]:checked`);
+
+    return {
+      label: group.label,
+      value: selected?.value || getFirstAvailableOption(group)?.value || "",
+    };
+  });
+}
+
+function formatChoices(choices) {
+  return choices.map((choice) => `${choice.label}: ${choice.value}`).join(" / ");
+}
+
+function getCartKey(item, choices) {
+  const choiceKey = choices.map((choice) => `${choice.label}:${choice.value}`).join("|");
+  return `${item.id}|${choiceKey}`;
+}
+
 function getCartItems() {
-  return [...cart.entries()].map(([id, quantity]) => {
-    const item = menuItems.find((menuItem) => menuItem.id === id);
-    return { ...item, quantity };
+  return [...cart.values()].map((entry) => {
+    const item = menuItems.find((menuItem) => menuItem.id === entry.itemId);
+    return { ...item, ...entry };
   });
 }
 
@@ -212,12 +338,13 @@ function renderCart() {
         <div class="cart-item">
           <div>
             <strong>${item.name}</strong>
+            ${item.choices.length ? `<small>${formatChoices(item.choices)}</small>` : ""}
             <span>${formatPrice(item.price)} each</span>
           </div>
           <div class="quantity" aria-label="${item.name} quantity">
-            <button type="button" data-decrease="${item.id}" aria-label="Remove one ${item.name}">-</button>
+            <button type="button" data-decrease="${item.key}" aria-label="Remove one ${item.name}">-</button>
             <output>${item.quantity}</output>
-            <button type="button" data-increase="${item.id}" aria-label="Add one ${item.name}">+</button>
+            <button type="button" data-increase="${item.key}" aria-label="Add one ${item.name}">+</button>
           </div>
         </div>
       `,
@@ -229,18 +356,38 @@ function renderCart() {
 }
 
 function addToCart(id) {
-  cart.set(id, (cart.get(id) || 0) + 1);
+  const item = menuItems.find((menuItem) => menuItem.id === id);
+  if (!item || !isItemAvailable(item)) return;
+
+  const choices = getSelectedChoices(item);
+  const key = getCartKey(item, choices);
+  const existing = cart.get(key);
+
+  cart.set(key, {
+    key,
+    itemId: id,
+    choices,
+    quantity: existing ? existing.quantity + 1 : 1,
+  });
   renderCart();
 }
 
-function decreaseCartItem(id) {
-  const quantity = cart.get(id);
-  if (!quantity) return;
+function increaseCartItem(key) {
+  const entry = cart.get(key);
+  if (!entry) return;
 
-  if (quantity === 1) {
-    cart.delete(id);
+  cart.set(key, { ...entry, quantity: entry.quantity + 1 });
+  renderCart();
+}
+
+function decreaseCartItem(key) {
+  const entry = cart.get(key);
+  if (!entry) return;
+
+  if (entry.quantity === 1) {
+    cart.delete(key);
   } else {
-    cart.set(id, quantity - 1);
+    cart.set(key, { ...entry, quantity: entry.quantity - 1 });
   }
 
   renderCart();
@@ -256,7 +403,9 @@ function buildWhatsAppMessage() {
 
   const orderLines = items.map(
     (item) =>
-      `- ${item.quantity} x ${item.name} (${formatPrice(item.price * item.quantity)})`,
+      `- ${item.quantity} x ${item.name}${
+        item.choices.length ? ` [${formatChoices(item.choices)}]` : ""
+      } (${formatPrice(item.price * item.quantity)})`,
   );
 
   return [
@@ -295,7 +444,7 @@ cartList.addEventListener("click", (event) => {
   const increaseButton = event.target.closest("[data-increase]");
   const decreaseButton = event.target.closest("[data-decrease]");
 
-  if (increaseButton) addToCart(increaseButton.dataset.increase);
+  if (increaseButton) increaseCartItem(increaseButton.dataset.increase);
   if (decreaseButton) decreaseCartItem(decreaseButton.dataset.decrease);
 });
 

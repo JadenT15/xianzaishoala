@@ -283,6 +283,7 @@ h2 {
 .menu-card-body {
   display: grid;
   gap: 14px;
+  align-content: start;
   padding: 16px;
 }
 
@@ -296,6 +297,62 @@ h2 {
   margin: 0;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.choice-group {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.choice-group legend {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.choice-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-chip {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 7px 9px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.choice-chip:has(input:checked) {
+  border-color: var(--red);
+  background: var(--gold-soft);
+  color: var(--red-dark);
+}
+
+.choice-chip input {
+  width: auto;
+  margin: 0;
+}
+
+.choice-chip.sold-out {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.choice-chip span {
+  color: var(--red);
+  font-size: 11px;
 }
 
 .menu-card-footer {
@@ -312,7 +369,7 @@ h2 {
 }
 
 .add-button {
-  width: 42px;
+  min-width: 42px;
   height: 42px;
   border: 0;
   border-radius: 8px;
@@ -322,6 +379,13 @@ h2 {
   font-size: 24px;
   font-weight: 900;
   line-height: 1;
+}
+
+.add-button:disabled {
+  background: var(--line);
+  color: var(--muted);
+  cursor: not-allowed;
+  font-size: 12px;
 }
 
 .order-section {
@@ -366,6 +430,13 @@ h2 {
 .cart-item strong,
 .cart-item span {
   display: block;
+}
+
+.cart-item small {
+  display: block;
+  margin-top: 5px;
+  color: var(--red-dark);
+  line-height: 1.35;
 }
 
 .cart-item span {
