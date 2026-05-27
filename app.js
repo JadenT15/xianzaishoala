@@ -80,7 +80,7 @@ const menuItems = [
     name: "脆皮烧肉饭",
     category: "烧味饭",
     price: 13.9,
-    description: "金黄脆皮烧肉，肥瘦相间，配白饭和特制酱汁。",
+    description: "金黄脆皮烧肉，肥瘦相间，搭配黄芥末。",
     image: menuImages.crispyPork,
   },
   {
