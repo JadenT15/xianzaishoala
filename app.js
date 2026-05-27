@@ -38,6 +38,14 @@ const choiceGroups = {
       { value: "半肥瘦", available: true },
     ],
   },
+  portionWeight: {
+    id: "portionWeight",
+    label: "重量",
+    options: [
+      { value: "100g", available: true, price: 12 },
+      { value: "200g", available: true, price: 23 },
+    ],
+  },
 };
 
 const menuItems = [
@@ -124,7 +132,7 @@ const menuItems = [
     price: 22.9,
     description: "蜜汁叉烧例牌，适合加餸或多人分享。",
     image: menuImages.charSiu,
-    choices: ["charSiuCut"],
+    choices: ["charSiuCut", "portionWeight"],
   },
   {
     id: "siew-yoke-portion",
@@ -133,6 +141,7 @@ const menuItems = [
     price: 23.9,
     description: "脆皮烧肉例牌，皮脆肉香。",
     image: menuImages.crispyPork,
+    choices: ["portionWeight"],
   },
 ];
 
@@ -198,10 +207,11 @@ function renderChoiceGroup(item, group) {
                   type="radio"
                   name="${item.id}-${group.id}"
                   value="${option.value}"
+                  ${option.price ? `data-price="${option.price}"` : ""}
                   ${checked}
                   ${disabled}
                 />
-                ${option.value}
+                ${option.value}${option.price ? ` ${formatPrice(option.price)}` : ""}
                 ${soldOut}
               </label>
             `;
@@ -232,7 +242,9 @@ function renderMenu() {
             </div>
             ${getItemChoiceGroups(item).map((group) => renderChoiceGroup(item, group)).join("")}
             <div class="menu-card-footer">
-              <span class="price">${formatPrice(item.price)}</span>
+              <span class="price" data-menu-price="${item.id}">${formatPrice(
+                getItemPrice(item, getDefaultChoices(item)),
+              )}</span>
               ${renderMenuQuantity(item, available)}
             </div>
           </div>
@@ -246,16 +258,19 @@ function getDefaultChoices(item) {
   return getItemChoiceGroups(item).map((group) => ({
     label: group.label,
     value: getFirstAvailableOption(group)?.value || "",
+    price: getFirstAvailableOption(group)?.price,
   }));
 }
 
 function getSelectedChoices(item) {
   return getItemChoiceGroups(item).map((group) => {
     const selected = document.querySelector(`input[name="${item.id}-${group.id}"]:checked`);
+    const fallback = getFirstAvailableOption(group);
 
     return {
       label: group.label,
-      value: selected?.value || getFirstAvailableOption(group)?.value || "",
+      value: selected?.value || fallback?.value || "",
+      price: selected?.dataset.price ? Number(selected.dataset.price) : fallback?.price,
     };
   });
 }
@@ -271,6 +286,11 @@ function getCartKey(item, choices) {
 
 function getCartQuantity(item, choices) {
   return cart.get(getCartKey(item, choices))?.quantity || 0;
+}
+
+function getItemPrice(item, choices = []) {
+  const priceChoice = choices.find((choice) => Number.isFinite(choice.price));
+  return priceChoice?.price || item.price;
 }
 
 function renderMenuQuantity(item, available) {
@@ -289,10 +309,14 @@ function renderMenuQuantity(item, available) {
 
 function updateMenuQuantityDisplay(id) {
   const item = menuItems.find((menuItem) => menuItem.id === id);
-  const output = menuGrid.querySelector(`[data-menu-count="${id}"]`);
+  const card = menuGrid.querySelector(`[data-item-card="${id}"]`);
+  const output = card?.querySelector(`[data-menu-count="${id}"]`);
+  const price = card?.querySelector(`[data-menu-price="${id}"]`);
+  const choices = item ? getSelectedChoices(item) : [];
 
-  if (!item || !output) return;
-  output.textContent = getCartQuantity(item, getSelectedChoices(item));
+  if (!item || !output || !price) return;
+  output.textContent = getCartQuantity(item, choices);
+  price.textContent = formatPrice(getItemPrice(item, choices));
 }
 
 function getCartItems() {
@@ -303,7 +327,10 @@ function getCartItems() {
 }
 
 function getCartTotal() {
-  return getCartItems().reduce((total, item) => total + item.price * item.quantity, 0);
+  return getCartItems().reduce(
+    (total, item) => total + getItemPrice(item, item.choices) * item.quantity,
+    0,
+  );
 }
 
 function renderCart() {
@@ -318,7 +345,7 @@ function renderCart() {
           <div>
             <strong>${item.name}</strong>
             ${item.choices.length ? `<small>${formatChoices(item.choices)}</small>` : ""}
-            <span>${formatPrice(item.price)} each</span>
+            <span>${formatPrice(getItemPrice(item, item.choices))} each</span>
           </div>
           <div class="quantity" aria-label="${item.name} quantity">
             <button type="button" data-decrease="${item.key}" aria-label="Remove one ${item.name}">-</button>
@@ -346,6 +373,7 @@ function addToCart(id) {
     key,
     itemId: id,
     choices,
+    price: getItemPrice(item, choices),
     quantity: existing ? existing.quantity + 1 : 1,
   });
   renderCart();
@@ -397,7 +425,7 @@ function buildWhatsAppMessage() {
     (item) =>
       `- ${item.quantity} x ${item.name}${
         item.choices.length ? ` [${formatChoices(item.choices)}]` : ""
-      } (${formatPrice(item.price * item.quantity)})`,
+      } (${formatPrice(getItemPrice(item, item.choices) * item.quantity)})`,
   );
 
   return [
