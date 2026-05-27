@@ -95,7 +95,6 @@ const menuItems = [
     price: 16.9,
     description: "烧鸭加蜜汁叉烧，一次满足两款经典烧味。",
     image: menuImages.roastDisplay,
-    choices: ["charSiuCut"],
   },
   {
     id: "siew-yoke-chicken-combo",
@@ -104,7 +103,6 @@ const menuItems = [
     price: 16.9,
     description: "脆皮烧肉配油鸡，咸香嫩滑，份量十足。",
     image: menuImages.crispyPork,
-    choices: ["chickenPart"],
   },
   {
     id: "four-treasure-rice",
@@ -113,7 +111,6 @@ const menuItems = [
     price: 19.9,
     description: "烧鸭、叉烧、烧肉、油鸡，经典港式烧味拼盘饭。",
     image: menuImages.roastDisplay,
-    choices: ["charSiuCut", "chickenPart"],
   },
   {
     id: "roast-duck-portion",
