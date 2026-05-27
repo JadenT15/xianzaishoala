@@ -43,16 +43,6 @@ const choiceGroups = {
       { value: "半肥瘦", available: true },
     ],
   },
-  duckPart: {
-    id: "duckPart",
-    label: "烧鸭部位",
-    options: [
-      { value: "鸭胸", available: true },
-      { value: "鸭腿", available: false },
-      { value: "上庄", available: true },
-      { value: "下庄", available: true },
-    ],
-  },
   porkCut: {
     id: "porkCut",
     label: "烧肉部位",
@@ -72,7 +62,6 @@ const menuItems = [
     price: 13.9,
     description: "皮脆肉嫩烧鸭，配白饭、青瓜和烧腊汁。",
     image: menuImages.roastDuck,
-    choices: ["duckPart"],
   },
   {
     id: "char-siu-rice",
@@ -117,7 +106,7 @@ const menuItems = [
     price: 16.9,
     description: "烧鸭加蜜汁叉烧，一次满足两款经典烧味。",
     image: menuImages.roastDisplay,
-    choices: ["duckPart", "charSiuCut"],
+    choices: ["charSiuCut"],
   },
   {
     id: "siew-yoke-chicken-combo",
@@ -135,7 +124,7 @@ const menuItems = [
     price: 19.9,
     description: "烧鸭、叉烧、烧肉、油鸡，经典港式烧味拼盘饭。",
     image: menuImages.roastDisplay,
-    choices: ["duckPart", "charSiuCut", "porkCut", "chickenPart"],
+    choices: ["charSiuCut", "porkCut", "chickenPart"],
   },
   {
     id: "roast-duck-portion",
@@ -144,7 +133,6 @@ const menuItems = [
     price: 24.9,
     description: "适合分享的烧鸭例牌，可搭配饭或面。",
     image: menuImages.roastDuck,
-    choices: ["duckPart"],
   },
   {
     id: "char-siu-portion",
