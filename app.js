@@ -38,7 +38,6 @@ const choiceGroups = {
     id: "charSiuCut",
     label: "叉烧肥瘦",
     options: [
-      { value: "肥", available: true },
       { value: "瘦", available: true },
       { value: "半肥瘦", available: true },
     ],
