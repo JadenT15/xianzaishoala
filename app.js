@@ -263,7 +263,7 @@ const translations = {
       鸡胸: "Breast",
       鸡二度: "Second Joint",
       鸡翅: "Wing",
-      鸡腿: "Leg",
+      鸡腿: "Drumstick",
       瘦: "Lean",
       半肥瘦: "Half Lean, Half Fat",
       "100g": "100g",
