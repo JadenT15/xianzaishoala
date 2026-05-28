@@ -166,7 +166,7 @@ const cartTotal = document.querySelector("#cartTotal");
 const orderForm = document.querySelector("#orderForm");
 const mobileCartCount = document.querySelector("#mobileCartCount");
 const pickupDateOptions = document.querySelector("#pickupDateOptions");
-const languageToggle = document.querySelector("#languageToggle");
+const languageButtons = document.querySelectorAll("[data-language-option]");
 const languageBadge = document.querySelector("[data-language-badge]");
 let currentLanguage = "zh";
 
@@ -485,13 +485,11 @@ function renderLanguage() {
     element.textContent = element.dataset[currentLanguage];
   });
 
-  if (languageToggle) {
-    languageToggle.textContent = currentLanguage === "zh" ? "EN" : "中文";
-    languageToggle.setAttribute(
-      "aria-label",
-      currentLanguage === "zh" ? "Switch to English" : "切换到中文",
-    );
-  }
+  languageButtons.forEach((button) => {
+    const isActive = button.dataset.languageOption === currentLanguage;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 
   if (languageBadge) {
     languageBadge.hidden = currentLanguage !== "en";
@@ -568,9 +566,11 @@ cartList.addEventListener("click", (event) => {
   if (decreaseButton) decreaseCartItem(decreaseButton.dataset.decrease);
 });
 
-languageToggle?.addEventListener("click", () => {
-  currentLanguage = currentLanguage === "zh" ? "en" : "zh";
-  renderLanguage();
+languageButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    currentLanguage = button.dataset.languageOption;
+    renderLanguage();
+  });
 });
 
 orderForm.addEventListener("submit", (event) => {

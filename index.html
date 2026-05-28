@@ -9,7 +9,7 @@
     />
     <title>Roast by Jaden | Online Menu</title>
     <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="stylesheet" href="styles.css?v=20260528-language-v5" />
+    <link rel="stylesheet" href="styles.css?v=20260528-language-v6" />
   </head>
   <body>
     <header class="site-header">
@@ -27,9 +27,10 @@
           <a href="#order" data-i18n data-zh="下单" data-en="Order">下单</a>
           <a href="#contact" data-i18n data-zh="联系" data-en="Contact">联系</a>
         </nav>
-        <button class="language-toggle" type="button" id="languageToggle" aria-label="Switch language">
-          EN
-        </button>
+        <div class="language-switch" aria-label="Language switch">
+          <button class="language-toggle" type="button" data-language-option="en">EN</button>
+          <button class="language-toggle" type="button" data-language-option="zh">中文</button>
+        </div>
       </div>
     </header>
 
@@ -193,6 +194,6 @@
       <a href="#order">Checkout</a>
     </div>
 
-    <script src="app.js?v=20260528-language-v5"></script>
+    <script src="app.js?v=20260528-language-v6"></script>
   </body>
 </html>

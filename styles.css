@@ -105,19 +105,36 @@ nav a:hover {
   color: var(--red);
 }
 
-.language-toggle {
-  min-width: 54px;
+.language-switch {
+  display: inline-flex;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
+}
+
+.language-toggle {
+  min-width: 48px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--red-dark);
   cursor: pointer;
   padding: 8px 10px;
   font-weight: 900;
 }
 
+.language-toggle + .language-toggle {
+  border-left: 1px solid var(--line);
+}
+
 .language-toggle:hover {
-  border-color: var(--red);
+  background: var(--gold-soft);
+}
+
+.language-toggle.active {
+  background: var(--red);
+  color: #fff;
 }
 
 .hero {
