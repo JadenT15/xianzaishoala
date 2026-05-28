@@ -279,7 +279,7 @@ const translations = {
     },
     ui: {
       soldOut: "Sold Out",
-      displayOnly: "Display only",
+      displayOnly: "Currently unavailable",
       each: "each",
       item: "item",
       items: "items",
@@ -297,7 +297,7 @@ const translations = {
     },
     ui: {
       soldOut: "已售完",
-      displayOnly: "展示 / 暂不售卖",
+      displayOnly: "暂不售卖",
       each: "每份",
       item: "份",
       items: "份",
