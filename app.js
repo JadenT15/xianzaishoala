@@ -103,6 +103,15 @@ const menuItems = [
     choices: ["chickenPart"],
   },
   {
+    id: "hk-roast-chicken-rice",
+    name: "港式烧鸡",
+    category: "烧味饭",
+    price: 12.9,
+    description: "港式烧鸡，皮香肉嫩，搭配白饭和烧腊汁。",
+    image: menuImages.roastChicken,
+    choices: ["chickenPart"],
+  },
+  {
     id: "duck-char-siu-combo",
     name: "烧鸭叉烧双拼饭",
     category: "双拼/拼盘",
@@ -185,6 +194,10 @@ const translations = {
       "white-chicken-rice": {
         name: "Steamed White Chicken Rice",
         description: "Silky steamed chicken served with ginger scallion sauce and fragrant steamed rice.",
+      },
+      "hk-roast-chicken-rice": {
+        name: "HK-Style Roast Chicken Rice",
+        description: "HK-style roast chicken with fragrant skin and tender meat, served with steamed rice and roast gravy.",
       },
       "duck-char-siu-combo": {
         name: "Roast Duck & Char Siu Rice",
