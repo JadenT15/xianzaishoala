@@ -166,6 +166,8 @@ const cartTotal = document.querySelector("#cartTotal");
 const orderForm = document.querySelector("#orderForm");
 const mobileCartCount = document.querySelector("#mobileCartCount");
 const pickupDateOptions = document.querySelector("#pickupDateOptions");
+const languageToggle = document.querySelector("#languageToggle");
+let currentLanguage = "zh";
 
 function formatPrice(value) {
   return `${business.currency}${value.toFixed(2)}`;
@@ -473,6 +475,24 @@ function renderPickupDates() {
   `;
 }
 
+function renderLanguage() {
+  document.documentElement.lang = currentLanguage;
+  document.title =
+    currentLanguage === "zh" ? "賢仔港式烧腊 | Online Menu" : "Roast by Jaden | Online Menu";
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    element.textContent = element.dataset[currentLanguage];
+  });
+
+  if (languageToggle) {
+    languageToggle.textContent = currentLanguage === "zh" ? "EN" : "中文";
+    languageToggle.setAttribute(
+      "aria-label",
+      currentLanguage === "zh" ? "Switch to English" : "切换到中文",
+    );
+  }
+}
+
 function buildWhatsAppMessage() {
   const name = document.querySelector("#customerName").value.trim();
   const phone = document.querySelector("#customerPhone").value.trim();
@@ -543,6 +563,11 @@ cartList.addEventListener("click", (event) => {
   if (decreaseButton) decreaseCartItem(decreaseButton.dataset.decrease);
 });
 
+languageToggle?.addEventListener("click", () => {
+  currentLanguage = currentLanguage === "zh" ? "en" : "zh";
+  renderLanguage();
+});
+
 orderForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -556,6 +581,7 @@ orderForm.addEventListener("submit", (event) => {
   window.open(url, "_blank", "noopener,noreferrer");
 });
 
+renderLanguage();
 renderPickupDates();
 renderCategories();
 renderMenu();

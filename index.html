@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,36 +9,41 @@
     />
     <title>Roast by Jaden | Online Menu</title>
     <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="stylesheet" href="styles.css?v=20260528-force-v4" />
+    <link rel="stylesheet" href="styles.css?v=20260528-language-v5" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Roast by Jaden home">
         <span class="brand-mark">J</span>
         <span>
-          <strong>Roast by Jaden</strong>
-          <small>正宗港式烧腊</small>
+          <strong data-i18n data-zh="賢仔港式烧腊" data-en="Roast by Jaden">賢仔港式烧腊</strong>
+          <small data-i18n data-zh="Roast by Jaden" data-en="正宗港式烧腊">Roast by Jaden</small>
         </span>
       </a>
 
-      <nav aria-label="Main navigation">
-        <a href="#menu">Menu</a>
-        <a href="#order">Order</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="header-actions">
+        <nav aria-label="Main navigation">
+          <a href="#menu" data-i18n data-zh="菜单" data-en="Menu">菜单</a>
+          <a href="#order" data-i18n data-zh="下单" data-en="Order">下单</a>
+          <a href="#contact" data-i18n data-zh="联系" data-en="Contact">联系</a>
+        </nav>
+        <button class="language-toggle" type="button" id="languageToggle" aria-label="Switch language">
+          EN
+        </button>
+      </div>
     </header>
 
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Now accepting pre-orders</p>
-          <h1>Roast by Jaden</h1>
-          <p>
+          <p class="eyebrow" data-i18n data-zh="接受预订" data-en="Now accepting pre-orders">接受预订</p>
+          <h1 data-i18n data-zh="賢仔港式烧腊" data-en="Roast by Jaden">賢仔港式烧腊</h1>
+          <p data-i18n data-zh="正宗港式烧腊，提供新鲜烧味饭、面、拼盘和外带订单。" data-en="Authentic Hong Kong roast meats, rice, noodles, platters and takeaway orders.">
             正宗港式烧腊，提供新鲜烧味饭、面、拼盘和外带订单。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#menu">View menu</a>
-            <a class="button ghost" href="#order">Order now</a>
+            <a class="button primary" href="#menu" data-i18n data-zh="看菜单" data-en="View menu">看菜单</a>
+            <a class="button ghost" href="#order" data-i18n data-zh="马上下单" data-en="Order now">马上下单</a>
           </div>
         </div>
       </section>
@@ -185,6 +190,6 @@
       <a href="#order">Checkout</a>
     </div>
 
-    <script src="app.js?v=20260528-force-v4"></script>
+    <script src="app.js?v=20260528-language-v5"></script>
   </body>
 </html>

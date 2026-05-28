@@ -85,9 +85,17 @@ textarea {
   font-size: 12px;
 }
 
+.header-actions,
 nav {
   display: flex;
   align-items: center;
+}
+
+.header-actions {
+  gap: 14px;
+}
+
+nav {
   gap: clamp(12px, 3vw, 28px);
   color: var(--muted);
   font-weight: 700;
@@ -95,6 +103,21 @@ nav {
 
 nav a:hover {
   color: var(--red);
+}
+
+.language-toggle {
+  min-width: 54px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--red-dark);
+  cursor: pointer;
+  padding: 8px 10px;
+  font-weight: 900;
+}
+
+.language-toggle:hover {
+  border-color: var(--red);
 }
 
 .hero {
@@ -655,9 +678,13 @@ fieldset {
     gap: 12px;
   }
 
-  nav {
+  .header-actions {
     width: 100%;
     justify-content: space-between;
+  }
+
+  nav {
+    justify-content: flex-start;
   }
 
   .hero {
