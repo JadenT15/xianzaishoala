@@ -160,6 +160,41 @@ const menuItems = [
     image: menuImages.crispyPork,
   },
   {
+    id: "duck-char-siu-siew-yoke-triple",
+    name: "烧鸭叉烧烧肉三拼饭",
+    category: "三拼饭",
+    price: 18.9,
+    description: "港式烧鸭、蜜汁叉烧和脆皮烧肉，三款经典烧味一次满足。",
+    image: menuImages.roastDisplay,
+    choices: ["charSiuCut"],
+  },
+  {
+    id: "duck-char-siu-roast-chicken-triple",
+    name: "烧鸭叉烧烧鸡三拼饭",
+    category: "三拼饭",
+    price: 18.9,
+    description: "港式烧鸭、蜜汁叉烧和港式烧鸡，香甜嫩滑，烧味丰富。",
+    image: menuImages.roastDisplay,
+    choices: ["charSiuCut"],
+  },
+  {
+    id: "duck-siew-yoke-roast-chicken-triple",
+    name: "烧鸭烧肉烧鸡三拼饭",
+    category: "三拼饭",
+    price: 18.9,
+    description: "港式烧鸭、脆皮烧肉和港式烧鸡，皮香肉嫩，份量十足。",
+    image: menuImages.roastDisplay,
+  },
+  {
+    id: "char-siu-siew-yoke-roast-chicken-triple",
+    name: "叉烧烧肉烧鸡三拼饭",
+    category: "三拼饭",
+    price: 18.9,
+    description: "蜜汁叉烧、脆皮烧肉和港式烧鸡，咸甜香嫩三种口感。",
+    image: menuImages.crispyPork,
+    choices: ["charSiuCut"],
+  },
+  {
     id: "four-treasure-rice",
     name: "四宝饭",
     category: "双拼/拼盘",
@@ -203,6 +238,7 @@ const translations = {
       All: "All",
       烧味饭: "Roast Rice",
       "双拼/拼盘": "Combo Platters",
+      三拼饭: "Triple Rice",
       单点加料: "A La Carte",
     },
     items: {
@@ -254,6 +290,22 @@ const translations = {
       "siew-yoke-chicken-combo": {
         name: "Roast Pork & Roast Chicken Rice",
         description: "Crispy roast pork served with HK-style roast chicken for a hearty savoury combo.",
+      },
+      "duck-char-siu-siew-yoke-triple": {
+        name: "Roast Duck, Char Siu & Roast Pork Triple Rice",
+        description: "HK-style roast duck, honey char siu and crispy roast pork in one classic triple rice.",
+      },
+      "duck-char-siu-roast-chicken-triple": {
+        name: "Roast Duck, Char Siu & Roast Chicken Triple Rice",
+        description: "HK-style roast duck, honey char siu and HK-style roast chicken for a rich triple combo.",
+      },
+      "duck-siew-yoke-roast-chicken-triple": {
+        name: "Roast Duck, Roast Pork & Roast Chicken Triple Rice",
+        description: "HK-style roast duck, crispy roast pork and HK-style roast chicken with generous roast flavour.",
+      },
+      "char-siu-siew-yoke-roast-chicken-triple": {
+        name: "Char Siu, Roast Pork & Roast Chicken Triple Rice",
+        description: "Honey char siu, crispy roast pork and HK-style roast chicken for sweet, crisp and tender bites.",
       },
       "four-treasure-rice": {
         name: "Four Treasures Rice",
