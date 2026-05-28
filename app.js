@@ -122,7 +122,7 @@ const menuItems = [
   {
     id: "custom-double-rice",
     name: "自选双拼饭",
-    category: "双拼/拼盘",
+    category: "双拼 / 三拼 / 拼盘",
     price: 16.9,
     description: "自选两款烧味，搭配白饭、香港芥兰或香港菜心和烧腊汁。",
     image: menuImages.roastDisplay,
@@ -136,7 +136,7 @@ const menuItems = [
   {
     id: "custom-triple-rice",
     name: "自选三拼饭",
-    category: "三拼饭",
+    category: "双拼 / 三拼 / 拼盘",
     price: 18.9,
     description: "自选三款烧味，搭配白饭、香港芥兰或香港菜心和烧腊汁。",
     image: menuImages.roastDisplay,
@@ -150,7 +150,7 @@ const menuItems = [
   {
     id: "four-treasure-rice",
     name: "四宝饭",
-    category: "双拼/拼盘",
+    category: "双拼 / 三拼 / 拼盘",
     price: 19.9,
     description: "烧鸭、叉烧、烧肉、烧鸡，搭配白饭、香港芥兰或香港菜心和烧腊汁。",
     image: menuImages.roastDisplay,
@@ -189,8 +189,7 @@ const translations = {
     categories: {
       All: "All",
       烧味饭: "Roast Rice",
-      "双拼/拼盘": "Combo Platters",
-      三拼饭: "Triple Rice",
+      "双拼 / 三拼 / 拼盘": "Double / Triple / Platters",
       单点加料: "A La Carte",
     },
     items: {
