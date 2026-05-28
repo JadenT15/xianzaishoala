@@ -120,6 +120,38 @@ const menuItems = [
     image: menuImages.roastDisplay,
   },
   {
+    id: "duck-siew-yoke-combo",
+    name: "烧鸭烧肉双拼饭",
+    category: "双拼/拼盘",
+    price: 16.9,
+    description: "港式烧鸭配脆皮烧肉，皮香肉嫩，烧味十足。",
+    image: menuImages.roastDisplay,
+  },
+  {
+    id: "siew-yoke-char-siu-combo",
+    name: "烧肉叉烧双拼饭",
+    category: "双拼/拼盘",
+    price: 16.9,
+    description: "脆皮烧肉配蜜汁叉烧，咸甜兼备，经典搭配。",
+    image: menuImages.crispyPork,
+  },
+  {
+    id: "char-siu-roast-chicken-combo",
+    name: "叉烧烧鸡双拼饭",
+    category: "双拼/拼盘",
+    price: 16.9,
+    description: "蜜汁叉烧配港式烧鸡，甜香嫩滑，份量十足。",
+    image: menuImages.charSiu,
+  },
+  {
+    id: "duck-roast-chicken-combo",
+    name: "烧鸭烧鸡双拼饭",
+    category: "双拼/拼盘",
+    price: 16.9,
+    description: "港式烧鸭配港式烧鸡，一次享用两款招牌烧味。",
+    image: menuImages.roastDisplay,
+  },
+  {
     id: "siew-yoke-chicken-combo",
     name: "烧肉烧鸡双拼饭",
     category: "双拼/拼盘",
@@ -202,6 +234,22 @@ const translations = {
       "duck-char-siu-combo": {
         name: "Roast Duck & Char Siu Rice",
         description: "Roast duck paired with honey char siu for two classic Hong Kong roast flavours in one meal.",
+      },
+      "duck-siew-yoke-combo": {
+        name: "Roast Duck & Roast Pork Rice",
+        description: "HK-style roast duck served with crispy roast pork for a rich classic combo.",
+      },
+      "siew-yoke-char-siu-combo": {
+        name: "Roast Pork & Char Siu Rice",
+        description: "Crispy roast pork served with honey char siu for a savoury and sweet pairing.",
+      },
+      "char-siu-roast-chicken-combo": {
+        name: "Char Siu & Roast Chicken Rice",
+        description: "Honey char siu served with HK-style roast chicken for a tender, hearty combo.",
+      },
+      "duck-roast-chicken-combo": {
+        name: "Roast Duck & Roast Chicken Rice",
+        description: "HK-style roast duck served with HK-style roast chicken for two signature roast meats in one meal.",
       },
       "siew-yoke-chicken-combo": {
         name: "Roast Pork & Roast Chicken Rice",
