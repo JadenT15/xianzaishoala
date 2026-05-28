@@ -421,6 +421,12 @@ h2 {
   font-size: 11px;
 }
 
+.choice-limit {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .menu-card-footer {
   display: flex;
   align-items: center;

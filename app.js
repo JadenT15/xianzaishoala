@@ -57,6 +57,14 @@ const choiceGroups = {
   },
 };
 
+const roastMeatOptions = [
+  { value: "烧鸭", available: true },
+  { value: "叉烧", available: true },
+  { value: "烧肉", available: true },
+  { value: "烧鸡", available: true },
+  { value: "白切鸡", available: true },
+];
+
 const menuItems = [
   {
     id: "roast-duck-rice",
@@ -112,87 +120,32 @@ const menuItems = [
     choices: ["chickenPart"],
   },
   {
-    id: "duck-char-siu-combo",
-    name: "烧鸭叉烧双拼饭",
+    id: "custom-double-rice",
+    name: "自选双拼饭",
     category: "双拼/拼盘",
     price: 16.9,
-    description: "烧鸭加蜜汁叉烧，一次满足两款经典烧味。",
+    description: "自选两款烧味，搭配白饭和烧腊汁。",
     image: menuImages.roastDisplay,
+    comboChoices: {
+      id: "roastMeats",
+      label: "选择两款烧味",
+      count: 2,
+      options: roastMeatOptions,
+    },
   },
   {
-    id: "duck-siew-yoke-combo",
-    name: "烧鸭烧肉双拼饭",
-    category: "双拼/拼盘",
-    price: 16.9,
-    description: "港式烧鸭配脆皮烧肉，皮香肉嫩，烧味十足。",
-    image: menuImages.roastDisplay,
-  },
-  {
-    id: "siew-yoke-char-siu-combo",
-    name: "烧肉叉烧双拼饭",
-    category: "双拼/拼盘",
-    price: 16.9,
-    description: "脆皮烧肉配蜜汁叉烧，咸甜兼备，经典搭配。",
-    image: menuImages.crispyPork,
-  },
-  {
-    id: "char-siu-roast-chicken-combo",
-    name: "叉烧烧鸡双拼饭",
-    category: "双拼/拼盘",
-    price: 16.9,
-    description: "蜜汁叉烧配港式烧鸡，甜香嫩滑，份量十足。",
-    image: menuImages.charSiu,
-  },
-  {
-    id: "duck-roast-chicken-combo",
-    name: "烧鸭烧鸡双拼饭",
-    category: "双拼/拼盘",
-    price: 16.9,
-    description: "港式烧鸭配港式烧鸡，一次享用两款招牌烧味。",
-    image: menuImages.roastDisplay,
-  },
-  {
-    id: "siew-yoke-chicken-combo",
-    name: "烧肉烧鸡双拼饭",
-    category: "双拼/拼盘",
-    price: 16.9,
-    description: "脆皮烧肉配港式烧鸡，咸香嫩滑，份量十足。",
-    image: menuImages.crispyPork,
-  },
-  {
-    id: "duck-char-siu-siew-yoke-triple",
-    name: "烧鸭叉烧烧肉三拼饭",
+    id: "custom-triple-rice",
+    name: "自选三拼饭",
     category: "三拼饭",
     price: 18.9,
-    description: "港式烧鸭、蜜汁叉烧和脆皮烧肉，三款经典烧味一次满足。",
+    description: "自选三款烧味，搭配白饭和烧腊汁。",
     image: menuImages.roastDisplay,
-    choices: ["charSiuCut"],
-  },
-  {
-    id: "duck-char-siu-roast-chicken-triple",
-    name: "烧鸭叉烧烧鸡三拼饭",
-    category: "三拼饭",
-    price: 18.9,
-    description: "港式烧鸭、蜜汁叉烧和港式烧鸡，香甜嫩滑，烧味丰富。",
-    image: menuImages.roastDisplay,
-    choices: ["charSiuCut"],
-  },
-  {
-    id: "duck-siew-yoke-roast-chicken-triple",
-    name: "烧鸭烧肉烧鸡三拼饭",
-    category: "三拼饭",
-    price: 18.9,
-    description: "港式烧鸭、脆皮烧肉和港式烧鸡，皮香肉嫩，份量十足。",
-    image: menuImages.roastDisplay,
-  },
-  {
-    id: "char-siu-siew-yoke-roast-chicken-triple",
-    name: "叉烧烧肉烧鸡三拼饭",
-    category: "三拼饭",
-    price: 18.9,
-    description: "蜜汁叉烧、脆皮烧肉和港式烧鸡，咸甜香嫩三种口感。",
-    image: menuImages.crispyPork,
-    choices: ["charSiuCut"],
+    comboChoices: {
+      id: "roastMeats",
+      label: "选择三款烧味",
+      count: 3,
+      options: roastMeatOptions,
+    },
   },
   {
     id: "four-treasure-rice",
@@ -201,7 +154,6 @@ const menuItems = [
     price: 19.9,
     description: "烧鸭、叉烧、烧肉、烧鸡，经典港式烧味拼盘饭。",
     image: menuImages.roastDisplay,
-    choices: ["charSiuCut"],
   },
   {
     id: "roast-duck-portion",
@@ -267,45 +219,13 @@ const translations = {
         name: "HK-Style Roast Chicken Rice",
         description: "HK-style roast chicken with fragrant skin and tender meat, served with steamed rice and roast gravy.",
       },
-      "duck-char-siu-combo": {
-        name: "Roast Duck & Char Siu Rice",
-        description: "Roast duck paired with honey char siu for two classic Hong Kong roast flavours in one meal.",
+      "custom-double-rice": {
+        name: "Build Your Own Double Roast Rice",
+        description: "Choose any two roast meats, served with steamed rice and roast gravy.",
       },
-      "duck-siew-yoke-combo": {
-        name: "Roast Duck & Roast Pork Rice",
-        description: "HK-style roast duck served with crispy roast pork for a rich classic combo.",
-      },
-      "siew-yoke-char-siu-combo": {
-        name: "Roast Pork & Char Siu Rice",
-        description: "Crispy roast pork served with honey char siu for a savoury and sweet pairing.",
-      },
-      "char-siu-roast-chicken-combo": {
-        name: "Char Siu & Roast Chicken Rice",
-        description: "Honey char siu served with HK-style roast chicken for a tender, hearty combo.",
-      },
-      "duck-roast-chicken-combo": {
-        name: "Roast Duck & Roast Chicken Rice",
-        description: "HK-style roast duck served with HK-style roast chicken for two signature roast meats in one meal.",
-      },
-      "siew-yoke-chicken-combo": {
-        name: "Roast Pork & Roast Chicken Rice",
-        description: "Crispy roast pork served with HK-style roast chicken for a hearty savoury combo.",
-      },
-      "duck-char-siu-siew-yoke-triple": {
-        name: "Roast Duck, Char Siu & Roast Pork Triple Rice",
-        description: "HK-style roast duck, honey char siu and crispy roast pork in one classic triple rice.",
-      },
-      "duck-char-siu-roast-chicken-triple": {
-        name: "Roast Duck, Char Siu & Roast Chicken Triple Rice",
-        description: "HK-style roast duck, honey char siu and HK-style roast chicken for a rich triple combo.",
-      },
-      "duck-siew-yoke-roast-chicken-triple": {
-        name: "Roast Duck, Roast Pork & Roast Chicken Triple Rice",
-        description: "HK-style roast duck, crispy roast pork and HK-style roast chicken with generous roast flavour.",
-      },
-      "char-siu-siew-yoke-roast-chicken-triple": {
-        name: "Char Siu, Roast Pork & Roast Chicken Triple Rice",
-        description: "Honey char siu, crispy roast pork and HK-style roast chicken for sweet, crisp and tender bites.",
+      "custom-triple-rice": {
+        name: "Build Your Own Triple Roast Rice",
+        description: "Choose any three roast meats, served with steamed rice and roast gravy.",
       },
       "four-treasure-rice": {
         name: "Four Treasures Rice",
@@ -329,6 +249,8 @@ const translations = {
       叉烧肥瘦: "Char Siu Cut",
       重量: "Weight",
       烧鸭规格: "Roast Duck Size",
+      选择两款烧味: "Choose 2 Roast Meats",
+      选择三款烧味: "Choose 3 Roast Meats",
     },
     choiceValues: {
       鸡胸: "Breast",
@@ -342,6 +264,11 @@ const translations = {
       一例: "Regular Portion",
       半只: "Half Duck",
       一只: "Whole Duck",
+      烧鸭: "Roast Duck",
+      叉烧: "Char Siu",
+      烧肉: "Roast Pork",
+      烧鸡: "Roast Chicken",
+      白切鸡: "White Chicken",
     },
     ui: {
       soldOut: "Sold Out",
@@ -413,6 +340,10 @@ function translateChoiceLabel(label) {
 }
 
 function translateChoiceValue(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => translateChoiceValue(item)).join(currentLanguage === "zh" ? "、" : ", ");
+  }
+
   return translations[currentLanguage]?.choiceValues?.[value] || value;
 }
 
@@ -428,13 +359,21 @@ function getItemChoiceGroups(item) {
   return (item.choices || []).map((choiceId) => choiceGroups[choiceId]).filter(Boolean);
 }
 
+function getItemComboChoiceGroup(item) {
+  return item.comboChoices || null;
+}
+
 function getFirstAvailableOption(group) {
   return group.options.find((option) => option.available);
 }
 
 function isItemAvailable(item) {
   if (item.displayOnly) return false;
-  return getItemChoiceGroups(item).every((group) => getFirstAvailableOption(group));
+  const comboGroup = getItemComboChoiceGroup(item);
+  const comboAvailable =
+    !comboGroup || comboGroup.options.filter((option) => option.available).length >= comboGroup.count;
+
+  return comboAvailable && getItemChoiceGroups(item).every((group) => getFirstAvailableOption(group));
 }
 
 function renderCategories() {
@@ -484,6 +423,43 @@ function renderChoiceGroup(item, group) {
   `;
 }
 
+function getComboHint(count, selectedCount = count) {
+  return currentLanguage === "zh" ? `已选 ${selectedCount} / ${count}` : `Selected ${selectedCount} / ${count}`;
+}
+
+function renderComboChoiceGroup(item, group) {
+  return `
+    <fieldset class="choice-group combo-choice-group" data-combo-group="${item.id}" data-combo-count="${group.count}">
+      <legend>${translateChoiceLabel(group.label)}</legend>
+      <div class="choice-options">
+        ${group.options
+          .map((option, index) => {
+            const checked = index < group.count ? "checked" : "";
+            const disabled = option.available ? "" : "disabled";
+            const optionLabel = translateChoiceValue(option.value);
+            const soldOut = option.available ? "" : `<span>${translateUi("soldOut")}</span>`;
+
+            return `
+              <label class="choice-chip ${option.available ? "" : "sold-out"}">
+                <input
+                  type="checkbox"
+                  name="${item.id}-${group.id}"
+                  value="${option.value}"
+                  ${checked}
+                  ${disabled}
+                />
+                ${optionLabel}
+                ${soldOut}
+              </label>
+            `;
+          })
+          .join("")}
+      </div>
+      <small class="choice-limit" data-combo-hint="${item.id}">${getComboHint(group.count)}</small>
+    </fieldset>
+  `;
+}
+
 function renderMenu() {
   const visibleItems =
     activeCategory === "All"
@@ -503,6 +479,7 @@ function renderMenu() {
               <p>${translateItemDescription(item)}</p>
             </div>
             ${getItemChoiceGroups(item).map((group) => renderChoiceGroup(item, group)).join("")}
+            ${getItemComboChoiceGroup(item) ? renderComboChoiceGroup(item, getItemComboChoiceGroup(item)) : ""}
             <div class="menu-card-footer">
               <span class="price" data-menu-price="${item.id}">${formatPrice(
                 getMenuDisplayPrice(item, getDefaultChoices(item)),
@@ -517,15 +494,28 @@ function renderMenu() {
 }
 
 function getDefaultChoices(item) {
-  return getItemChoiceGroups(item).map((group) => ({
+  const choices = getItemChoiceGroups(item).map((group) => ({
     label: group.label,
     value: getFirstAvailableOption(group)?.value || "",
     price: getFirstAvailableOption(group)?.price,
   }));
+
+  const comboGroup = getItemComboChoiceGroup(item);
+  if (comboGroup) {
+    choices.push({
+      label: comboGroup.label,
+      value: comboGroup.options
+        .filter((option) => option.available)
+        .slice(0, comboGroup.count)
+        .map((option) => option.value),
+    });
+  }
+
+  return choices;
 }
 
 function getSelectedChoices(item) {
-  return getItemChoiceGroups(item).map((group) => {
+  const choices = getItemChoiceGroups(item).map((group) => {
     const selected = document.querySelector(`input[name="${item.id}-${group.id}"]:checked`);
     const fallback = getFirstAvailableOption(group);
 
@@ -535,16 +525,41 @@ function getSelectedChoices(item) {
       price: selected?.dataset.price ? Number(selected.dataset.price) : fallback?.price,
     };
   });
+
+  const comboGroup = getItemComboChoiceGroup(item);
+  if (comboGroup) {
+    const inputs = [...document.querySelectorAll(`input[name="${item.id}-${comboGroup.id}"]`)];
+    const selectedValues =
+      inputs.length > 0
+        ? inputs.filter((input) => input.checked).map((input) => input.value)
+        : comboGroup.options
+            .filter((option) => option.available)
+            .slice(0, comboGroup.count)
+            .map((option) => option.value);
+
+    choices.push({
+      label: comboGroup.label,
+      value: selectedValues,
+    });
+  }
+
+  return choices;
 }
 
 function formatChoices(choices) {
   return choices
+    .filter((choice) => (Array.isArray(choice.value) ? choice.value.length > 0 : choice.value))
     .map((choice) => `${translateChoiceLabel(choice.label)}: ${translateChoiceValue(choice.value)}`)
     .join(" / ");
 }
 
 function getCartKey(item, choices) {
-  const choiceKey = choices.map((choice) => `${choice.label}:${choice.value}`).join("|");
+  const choiceKey = choices
+    .map((choice) => {
+      const value = Array.isArray(choice.value) ? choice.value.join(",") : choice.value;
+      return `${choice.label}:${value}`;
+    })
+    .join("|");
   return `${item.id}|${choiceKey}`;
 }
 
@@ -596,6 +611,33 @@ function updateMenuQuantityDisplay(id) {
   price.textContent = formatPrice(getMenuDisplayPrice(item, choices));
 }
 
+function getSelectedComboCount(item) {
+  const comboGroup = getItemComboChoiceGroup(item);
+  if (!comboGroup) return 0;
+
+  return document.querySelectorAll(`input[name="${item.id}-${comboGroup.id}"]:checked`).length;
+}
+
+function hasValidComboSelection(item) {
+  const comboGroup = getItemComboChoiceGroup(item);
+  if (!comboGroup) return true;
+
+  return getSelectedComboCount(item) === comboGroup.count;
+}
+
+function updateComboSelectionState(item) {
+  const comboGroup = getItemComboChoiceGroup(item);
+  if (!comboGroup) return;
+
+  const selectedCount = getSelectedComboCount(item);
+  const card = menuGrid.querySelector(`[data-item-card="${item.id}"]`);
+  const addButton = card?.querySelector(`[data-add="${item.id}"]`);
+  const hint = card?.querySelector(`[data-combo-hint="${item.id}"]`);
+
+  if (addButton) addButton.disabled = selectedCount !== comboGroup.count;
+  if (hint) hint.textContent = getComboHint(comboGroup.count, selectedCount);
+}
+
 function getCartItems() {
   return [...cart.values()].map((entry) => {
     const item = menuItems.find((menuItem) => menuItem.id === entry.itemId);
@@ -641,6 +683,7 @@ function renderCart() {
 function addToCart(id) {
   const item = menuItems.find((menuItem) => menuItem.id === id);
   if (!item || item.displayOnly || !isItemAvailable(item)) return;
+  if (!hasValidComboSelection(item)) return;
 
   const choices = getSelectedChoices(item);
   const key = getCartKey(item, choices);
@@ -824,6 +867,17 @@ menuGrid.addEventListener("click", (event) => {
 menuGrid.addEventListener("change", (event) => {
   const card = event.target.closest("[data-item-card]");
   if (!card) return;
+
+  const item = menuItems.find((menuItem) => menuItem.id === card.dataset.itemCard);
+  const comboGroup = item ? getItemComboChoiceGroup(item) : null;
+
+  if (comboGroup && event.target.matches(`input[name="${item.id}-${comboGroup.id}"]`)) {
+    const selectedInputs = [...card.querySelectorAll(`input[name="${item.id}-${comboGroup.id}"]:checked`)];
+    if (selectedInputs.length > comboGroup.count) {
+      event.target.checked = false;
+    }
+    updateComboSelectionState(item);
+  }
 
   updateMenuQuantityDisplay(card.dataset.itemCard);
 });
